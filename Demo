@@ -70,13 +70,6 @@
   </audio>
 </div>
 
-<!-- footer -->
-<p style="text-align:center;font-size:0.9rem;">
-  Built with standard HTML &lt;audio&gt; controls:contentReference[oaicite:1]{index=1} and simple CSS
-  positioning. Feel free to tweak the <code>top</code>/<code>left</code> percentages
-  if you change the image aspect ratio. For clickable regions instead of overlaid
-  players you could also use an <code>&lt;map&gt;/&lt;area&gt;</code> image‑map:contentReference[oaicite:2]{index=2}.
-</p>
 
 </body>
 </html>
