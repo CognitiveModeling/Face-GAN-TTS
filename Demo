@@ -2,16 +2,81 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Audio Playback</title>
+  <title>Face‑GAN‑TTS Demo</title>
+
+  <!-- Responsive container so the overlay keeps its proportions -->
+  <style>
+    .spec‑container {
+      position: relative;
+      max-width: 900px;     /* change to your preferred width */
+      margin: 2rem auto;
+    }
+    .spec‑container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* generic overlay audio controls */
+    .audio‑overlay {
+      position: absolute;
+      width: 160px;         /* player width */
+      height: 30px;         /* keep controls compact */
+      opacity: 0.95;        /* slight transparency looks nice */
+    }
+    /* individually fine‑tuned positions (top & left in %) */
+    #gt       { top:  5%;  left:  5%;  }   /* (a) Ground‑Truth       */
+    #gan      { top:  5%;  left: 55%; }   /* (b) Face‑GAN‑TTS      */
+    #scratch  { top: 38%;  left:  5%; }   /* (c) FACE‑TTS Scratch  */
+    #finetune { top: 38%;  left: 55%; }   /* (d) FACE‑TTS Finetune */
+    #lrs3     { top: 71%;  left:  5%; }   /* (e) FACE‑TTS LRS3     */
+  </style>
 </head>
 <body>
-  <h1>Play Sound</h1>
 
-  <p>Click to play:</p>
-  <audio controls>
-    <source src="audio_files/hinge00003.wav" type="audio/wav">
-    Your browser does not support the audio element.
+<h1 style="text-align:center;">Face‑GAN‑TTS &ensp;|&ensp;Demo Samples</h1>
+
+<div class="spec‑container">
+  <!-- the composite spectrogram -->
+  <img src="image.png" alt="Mel‑spectrogram comparison for Face‑GAN‑TTS and baselines">
+
+  <!-- (a) Ground‑truth – remove if you do not have this WAV -->
+  <audio id="gt"  class="audio‑overlay" controls preload="none">
+    <source src="audio/GroundTruth_spk1263_00003.wav" type="audio/wav">
+    Your browser does not support the <code>audio</code> element.  
   </audio>
+
+  <!-- (b) Face‑GAN‑TTS -->
+  <audio id="gan" class="audio‑overlay" controls preload="none">
+    <source src="audio/FACEGANTTS_spk1263_00003.wav" type="audio/wav">
+    Your browser does not support the <code>audio</code> element.
+  </audio>
+
+  <!-- (c) FACE‑TTS Scratch -->
+  <audio id="scratch" class="audio‑overlay" controls preload="none">
+    <source src="audio/FACETTS_scratch_spk1263_00003.wav" type="audio/wav">
+    Your browser does not support the <code>audio</code> element.
+  </audio>
+
+  <!-- (d) FACE‑TTS Finetuned -->
+  <audio id="finetune" class="audio‑overlay" controls preload="none">
+    <source src="audio/FACETTS_finetuned_spk1263_00003.wav" type="audio/wav">
+    Your browser does not support the <code>audio</code> element.
+  </audio>
+
+  <!-- (e) FACE‑TTS trained on LRS3 -->
+  <audio id="lrs3" class="audio‑overlay" controls preload="none">
+    <source src="audio/FACETTS_LRS3_ONLY_spk1263_00003.wav" type="audio/wav">
+    Your browser does not support the <code>audio</code> element.
+  </audio>
+</div>
+
+<!-- footer -->
+<p style="text-align:center;font-size:0.9rem;">
+  Built with standard HTML &lt;audio&gt; controls:contentReference[oaicite:1]{index=1} and simple CSS
+  positioning. Feel free to tweak the <code>top</code>/<code>left</code> percentages
+  if you change the image aspect ratio. For clickable regions instead of overlaid
+  players you could also use an <code>&lt;map&gt;/&lt;area&gt;</code> image‑map:contentReference[oaicite:2]{index=2}.
+</p>
 
 </body>
 </html>
