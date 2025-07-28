@@ -8,7 +8,7 @@
   <style>
     .spec‑container {
       position: relative;
-      max-width: 900px;     /* change to your preferred width */
+      max-width: 900px;     
       margin: 2rem auto;
     }
     .spec‑container img {
