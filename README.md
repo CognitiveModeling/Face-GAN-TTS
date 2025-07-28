@@ -1,6 +1,6 @@
 # [Face-GAN-TTS] An Adversarial-Diffusion Framework for Generating High-Quality Voices from Faces
 
-<a href="https://facetts.github.io/"><img src="https://img.shields.io/badge/Project%20Page-online-brightgreen"></a>
+<a href="https://degiaaaa.github.io/Demo_Face-GAN-TTS/"><img src="https://img.shields.io/badge/Project%20Page-online-brightgreen"></a>
 
 ---
 ## Installation
