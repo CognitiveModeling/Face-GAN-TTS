@@ -1,0 +1,60 @@
+{
+  "optimization_procedure_name": "hp_optimization",
+  "results_dir": "/mnt/lustre/work/butz/bst080/faceGANtts/hyperopt",
+  "script_relative_path": "hyperopt/hyperopt.py",
+  "run_in_working_dir": false,
+  "run_command": "python hyperopt.py",
+  "metric_regex": "Composite Metric:\\s*([\\d.-]+)",
+  "environment_setup": {
+      "use_conda": true,
+      "conda_env": "/home/butz/bst080/miniconda3/envs/train_env",
+      "additional_setup": [
+          "export CUDA_VISIBLE_DEVICES=0,1,2,3"
+
+      ]
+  },
+  "cluster_requirements": {
+      "request_gpus": 4,
+      "request_cpus": 4, 
+      "memory_in_mb": 50000,
+      "partition": "a100-fat-galvani",
+      "request_time": "3-00:00:00"
+  },
+  "git_params": {
+    "url": "git@github.com:degiaaaa/facetts-optimizer.git",
+    "branch": "main"
+  },
+  "optimizer_str": "cem_metaoptimizer",
+  "optimizer_settings": {
+        "with_restarts": true,
+        "num_jobs_in_elite": 5
+    },
+  "num_best_jobs_whose_data_is_kept": 5000,
+  "fixed_params": {
+},
+"optimized_params": [
+  {"param": "use_spectral_norm", "distribution": "Discrete", "options": [0, 1]},
+  {"param": "denoise_factor", "distribution": "Discrete", "options": [0.2, 0.4, 0.5, 0.6, 0.7]},
+  {"param": "use_r1_penalty", "distribution": "Discrete", "options": [0, 1]},
+  {"param": "r1_gamma", "distribution": "Discrete", "options": [5, 10, 15, 20]},
+  {"param": "kernel_width", "distribution": "Discrete", "options": [3, 5, 7, 9, 12, 15]},
+  {"param": "kernel_height", "distribution": "Discrete", "options": [3, 5, 7, 9, 12, 15]},
+  {"param": "disc_padding", "distribution": "Discrete", "options": [4, 6, 7]},
+  {"param": "disc_stride", "distribution": "Discrete", "options": [1, 2, 3]},
+  {"param": "disc_loss_type", "distribution": "Discrete", "options": ["bce", "mse", "hinge", "ls"]},
+  {"param": "use_pitch_loss", "distribution": "Discrete", "options": [1]},
+  {"param": "use_energy_loss", "distribution": "Discrete", "options": [1]},
+  {"param": "use_fm_loss", "distribution": "Discrete", "options": [1]}
+  
+
+],
+  "optimization_setting": {
+        "number_of_samples":15,
+        "run_local": false,
+        "n_jobs_per_iteration": 15,
+        "n_completed_jobs_before_resubmit": 2,
+        "metric_to_optimize": "Composite Metric",
+        "minimize": true
+
+    }
+}
