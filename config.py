@@ -8,7 +8,7 @@ ex = Experiment("face-tts")
 
 @ex.config
 def config():
-    # Add this line to set a default value for perceptual_loss
+
     seed = int(os.getenv("seed", 37))
     perceptual_loss = int(os.getenv("perceptual_loss", 1))  # True: 1 / False: 0 / generates xhat for Speaker Feature Binding Loss / Has to be true otherwise error /
     #local_checkpoint_dir = os.getenv("local_checkpoint_dir", "./checkpoints")
@@ -95,44 +95,44 @@ def config():
     gamma = float(os.getenv("gamma", 0.02)) # speaker loss weight for facetts #default for original FaceTTs 0.01 for FaceGANtts 0.02
 
     #Discriminator Parameter
-    disc_lrelu_slope = float(os.getenv("disc_lrelu_slope", 0.3)) #default 0.2
-    disc_learning_rate = float(os.getenv("disc_learning_rate", 1e-4)) # default 1e-6
-    use_spectral_norm = int(os.getenv("use_spectral_norm", 0)) # True: 1 / False: 0 #default 1
+    disc_lrelu_slope = float(os.getenv("disc_lrelu_slope", 0.3)) 
+    disc_learning_rate = float(os.getenv("disc_learning_rate", 1e-4)) 
+    use_spectral_norm = int(os.getenv("use_spectral_norm", 0)) # True: 1 / False: 0 
 
-    disc_base_channels = int(os.getenv("disc_base_channels", 64)) #default 32
-    disc_num_layers = int(os.getenv("disc_num_layers", 5)) #default 3
+    disc_base_channels = int(os.getenv("disc_base_channels", 64)) 
+    disc_num_layers = int(os.getenv("disc_num_layers", 5)) 
     residual_channels = int(os.getenv("residual_channels", 256))
-    kernel_width = int(os.getenv("kernel_width", 5)) #default 9
-    kernel_height = int(os.getenv("kernel_height", 12)) #default 3
-    disc_stride = int(os.getenv("disc_stride", 1))  # default 2
-    disc_padding = int(os.getenv("disc_padding", 6)) # default 4
+    kernel_width = int(os.getenv("kernel_width", 5)) 
+    kernel_height = int(os.getenv("kernel_height", 12)) 
+    disc_stride = int(os.getenv("disc_stride", 1))  
+    disc_padding = int(os.getenv("disc_padding", 6)) 
 
-    warmup_disc_epochs = int(os.getenv("warmup_disc_epochs", 0)) #default 5
-    freeze_gen_epochs = int(os.getenv("freeze_gen_epochs", 0)) #default 2
+    warmup_disc_epochs = int(os.getenv("warmup_disc_epochs", 0)) 
+    freeze_gen_epochs = int(os.getenv("freeze_gen_epochs", 0)) 
     micro_batch_size = int(os.getenv("micro_batch_size", 16))
 
     use_r1_penalty = int(os.getenv("use_r1_penalty", 1))  # 1 = True (default), 0 = False
-    r1_gamma = float(os.getenv("r1_gamma", 15.0))         # default 15
-    r1_start_epoch = int(os.getenv("r1_start_epoch", 0))  # default 0
+    r1_gamma = float(os.getenv("r1_gamma", 15.0))         
+    r1_start_epoch = int(os.getenv("r1_start_epoch", 0))  
 
 
     # Opimizer Configs for Discriminator 
-    disc_betas_0 = float(os.getenv("disc_betas_0", 0.9))  # First beta parameter for discriminator Adam # default 0.9 for disc 0.5?
+    disc_betas_0 = float(os.getenv("disc_betas_0", 0.9))  # First beta parameter for discriminator Adam # default 0.9 
     disc_betas_1 = float(os.getenv("disc_betas_1", 0.999))  # Second beta parameter for discriminator Adam default 0.999 
     # Discriminator-Optimizer Einstellungen
-    disc_eps = float(os.getenv("disc_eps", 1e-8))  #default 1e-8
+    disc_eps = float(os.getenv("disc_eps", 1e-8))  
    
     # Optimizer Configs for Generator 
     optim_type = os.getenv("optim_type", "adam") 
     schedule_type = os.getenv("schedule_type", "constant")
     learning_rate = float(os.getenv("learning_rate", 1e-8)) # FaceTTs original no checkpoints default 1e-4 and with 1e-6 FaceGANtts default 1e-8
-    end_lr = float(os.getenv("end_lr", 1e-7)) # default  1e-7 
+    end_lr = float(os.getenv("end_lr", 1e-7)) 
     weight_decay = float(os.getenv("weight_decay", 0.1))
     decay_power = float(os.getenv("decay_power", 1.0))
     max_steps = int(os.getenv("max_steps", 100000))
 
     save_step = int(os.getenv("save_step", 10000))
-    warmup_steps = float(os.getenv("warmup_steps", 2))  # 1000 
+    warmup_steps = float(os.getenv("warmup_steps", 2))  
     gen_eps = float(os.getenv("gen_eps", 1e-8))  
 
     video_data_root = os.getenv("video_data_root", "mp4")
@@ -141,11 +141,11 @@ def config():
     #log_dir = os.getenv("CHECKPOINTS", "./logs")
     log_every_n_steps = int(os.getenv("log_every_n_steps", 1000))
 
-    num_gpus = int(os.getenv("num_gpus", 4)) #it was 1 -> 
+    num_gpus = int(os.getenv("num_gpus", 4)) 
     per_gpu_batchsize = int(batch_size / num_gpus)
-    num_nodes = int(os.getenv("num_nodes", 1)) #default 1
-    num_workers = int(os.getenv("num_workers",  8))  # Default is 2
-    prefetch_factor = int(os.getenv("preftch_factor", 2))  # Default is 2
+    num_nodes = int(os.getenv("num_nodes", 1)) 
+    num_workers = int(os.getenv("num_workers",  8))  
+    prefetch_factor = int(os.getenv("preftch_factor", 2))  
 
     #Checkpoints loading
     resume_from = os.getenv("resume_from", "./ckpts/facetts_lrs3.pt") #to train initializing with LRS3 Checkpoints set: ./ckpts/facetts_lrs3.pt # to train from scratch set ./ckpts/no
@@ -156,11 +156,11 @@ def config():
     # 2 = use a face from the dataset and perform batch inference over LRS2 test set,
     # 0 or other = load a dataset face image but do not run inference
 
-    test_faceimg = os.getenv("test_faceimg", "test/face.png") #CFD-AF-200-228-N.
+    test_faceimg = os.getenv("test_faceimg", "test/face.png") 
     timesteps = int(os.getenv("timesteps", 10))
     output_dir_orig = os.getenv("output_dir", "/mnt/lustre/work/butz/bst080/faceGANtts/test/CFD_Facetts_scratch")
     output_dir_gan = os.getenv("output_dir", "/mnt/lustre/work/butz/bst080/faceGANtts/test/inference_faceGANtts")
-    ground_truth_dir =os.getenv("ground_truth_dir", "/mnt/lustre/work/butz/bst080/data/mvlrs_v1/lrs2_splitted/wav/test/")#/mnt/lustre/work/butz/bst080/data/mvlrs_v1/lrs2_splitted/wav/test/
+    ground_truth_dir =os.getenv("ground_truth_dir", "/mnt/lustre/work/butz/bst080/data/mvlrs_v1/lrs2_splitted/wav/test/")
     results_path = os.getenv("results_path", "evaluation")
     # SyncNet Configs
     syncnet_initw = float(os.getenv("syncnet_initw", 10.0))
@@ -178,4 +178,5 @@ def config():
 
     id = os.getenv("id", "unknown")
     working_dir = os.getenv("working_dir", "")
+
 
