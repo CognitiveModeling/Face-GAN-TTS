@@ -75,7 +75,7 @@ python inference.py
 
 3. Result will be saved in `'test/'`. 
 
-:zap: To make MOS test set, we use 'test/ljspeech_text.txt' to randomly select text description.
+:zap: To make MOS test set, we use the LRS2 test set and the <a href="https://www.chicagofaces.org/">CFD corpus</a> to randomly select faces.
 
 --- 
 ## Training
@@ -115,3 +115,4 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
