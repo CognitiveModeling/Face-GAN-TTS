@@ -1,6 +1,6 @@
 # [Face-GAN-TTS] An Adversarial-Diffusion Framework for Generating High-Quality Voices from Faces
 
-<a href="https://degiaaaa.github.io/Demo_Face-GAN-TTS/"><img src="https://img.shields.io/badge/Project%20Page-online-brightgreen"></a>
+<a href="https://facetts.github.io/"><img src="https://img.shields.io/badge/Project%20Page-online-brightgreen"></a>
 
 ---
 ## Installation
@@ -13,7 +13,7 @@ conda activate label_env
 ```
 
 ```
-conda env create -f environment.yaml
+conda env create -f environment_train_emv.yaml
 conda activate train_env
 ```
 
@@ -24,7 +24,19 @@ cd model/monotonic_align; python setup.py build_ext --inplace; cd ../..
 
 ---
 ## Preparation
-1. Download trained model weights from <a href="https://drive.google.com/file/d/18ERr-91Z1Mnc2Aq9n1nBPijzb5gSymLq/view?usp=sharing">here</a>
+
+1. Checkpoint handling
+
+    1.1 For Face-GAN-TTS transfer LRS2 trained model weights from the USB-Stick
+
+    or
+
+    1.2 For FACE-TTS download LRS3 trained model weights from [here](https://drive.google.com/file/d/18ERr-91Z1Mnc2Aq9n1nBPijzb5gSymLq/view?usp=sharing)
+
+    1.3 Store the checkpoints here: `'.\ckpts\'`
+
+    1.4 Adjust `'resume_from'`, `'use_gan'`, `'infr_resume_from_orig'` or `'infr_resume_gan'` in `config.py`
+
 
 2. Download <a href="https://www.robots.ox.ac.uk/~vgg/data/lip_reading/lrs2.html">LRS2</a> into `'data/lrs2/'` 
 
