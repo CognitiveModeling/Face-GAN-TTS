@@ -29,8 +29,6 @@ cd model/monotonic_align; python setup.py build_ext --inplace; cd ../..
 
     1.1 For Face-GAN-TTS transfer LRS2 trained model weights from the USB-Stick
 
-    or
-
     1.2 For FACE-TTS download LRS3 trained model weights from [here](https://drive.google.com/file/d/18ERr-91Z1Mnc2Aq9n1nBPijzb5gSymLq/view?usp=sharing)
 
     1.3 Store the checkpoints here: `'.\ckpts\'`
@@ -115,4 +113,5 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
 
