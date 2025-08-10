@@ -43,9 +43,6 @@ mos_long["Group"] = mos_long["ID"].map(id_to_group)
 mos_long.dropna(subset=["Group","Rating"], inplace=True)
 
 # -------------------------------------------------------------------------
-# 2) Deskriptive Statistik
-# -------------------------------------------------------------------------
-# -------------------------------------------------------------------------
 # 2) Deskriptive Statistik (Mittelwert und Standardabweichung)
 # -------------------------------------------------------------------------
 desc_stats = mos_long.groupby(["Group", "Type"])["Rating"].agg(["mean", "std"]).round(2)
@@ -253,4 +250,5 @@ def print_versions():
 
 # Direkt aufrufen, wenn dieses Skript als Main läuft
 if __name__ == "__main__":
+
     print_versions()
